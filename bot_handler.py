@@ -1,5 +1,4 @@
-import requests  
-import datetime
+import requests
 
 class BotHandler:
 
@@ -11,7 +10,7 @@ class BotHandler:
         method = 'getUpdates'
         params = {'timeout': timeout, 'offset': offset}
         resp = requests.get(self.api_url + method, params)
-        result_json = resp.json()['result']
+        result_json = resp.json().get('result')
         return result_json
 
     def send_message(self, chat_id, text):
@@ -26,6 +25,6 @@ class BotHandler:
         if len(get_result) > 0:
             last_update = get_result[-1]
         else:
-            last_update = get_result[len(get_result)]
+            last_update = None
 
         return last_update
