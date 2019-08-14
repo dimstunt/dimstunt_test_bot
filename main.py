@@ -23,7 +23,7 @@ def main():
         last_chat_text = last_update.get('message').get('text')
         last_chat_id = last_update.get('message').get('chat').get('id')
         last_chat_name = last_update.get('message').get('chat').get('first_name')
-        if len(last_chat_text)>0:
+        if (last_chat_text is not None) and len(last_chat_text)>0:
             greet_bot.send_message(last_chat_id, 'Если я блядь сейчас не заработаю, меня выключат нахуй. А заработал я в {}'.format(now))
         # if last_chat_text.lower() in greetings and today == now.day and 6 <= hour < 12:
         #     greet_bot.send_message(last_chat_id, 'Доброе утро, {}'.format(last_chat_name))
